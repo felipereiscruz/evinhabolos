@@ -302,31 +302,6 @@ window.render = function() {
   }).join('');
 };
 
-// ── Gera payload PIX copia-e-cola ──
-function gerarPixPayload(chave, nome, valor, txid) {
-  function campo(id, val) {
-    const len = val.length.toString().padStart(2,'0');
-    return id + len + val;
-  }
-  const merchantAccountInfo = campo('00','BR.GOV.BCB.PIX') + campo('01', chave);
-  const mai = campo('26', merchantAccountInfo);
-  const nomeFormatado = nome.normalize('NFD').replace(/[\u0300-\u036f]/g,'').substring(0,25).toUpperCase();
-  const valorStr = valor.toFixed(2);
-  const txidFormatado = (txid||'***').substring(0,25).replace(/\s/g,'');
-
-  let payload = campo('00','01') + mai + campo('52','0000') + campo('53','986')
-    + campo('54', valorStr) + campo('58','BR') + campo('59', nomeFormatado)
-    + campo('60','Vitoria') + campo('62', campo('05', txidFormatado));
-
-  // CRC16
-  payload += '6304';
-  let crc = 0xFFFF;
-  for (let i=0; i<payload.length; i++) {
-    crc ^= payload.charCodeAt(i) << 8;
-    for (let j=0; j<8; j++) crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
-  }
-  return payload + (crc & 0xFFFF).toString(16).toUpperCase().padStart(4,'0');
-}
 
 // ── Confirmar ──
 window.confirmar = async key => {
@@ -352,8 +327,6 @@ window.confirmar = async key => {
   const entradaStr = `R$ ${entrada.toFixed(2).replace('.',',')}`;
   const totalStr   = `R$ ${precoVal.toFixed(2).replace('.',',')}`;
 
-  // Gera PIX copia-e-cola
-  const pixPayload = gerarPixPayload(PIX_CHAVE, PIX_NOME, entrada, key.substring(0,10));
 
   const msg = [
     `Oi ${p.cliente}! 🎂`,
@@ -369,13 +342,10 @@ window.confirmar = async key => {
     `⚡ *ENTRADA VIA PIX: ${entradaStr}*`,
     `Para garantir seu pedido, por favor pague a entrada antes de eu começar a fazer 😊`,
     ``,
-    `🔑 *Chave PIX:* \`${PIX_CHAVE}\``,
-    ``,
-    `📋 *PIX Copia e Cola:*`,
-    `\`${pixPayload}\``,
+    `🔑 *Chave PIX (telefone):* ${PIX_CHAVE}`,
     `━━━━━━━━━━━━━━━━━━`,
     ``,
-    `O restante (${totalStr} - ${entradaStr} = R$ ${entrada.toFixed(2).replace('.',',')}) paga na retirada 💛`,
+    `O restante paga na retirada 💛`,
     ``,
     `Qualquer dúvida me chama aqui! 🎂`,
   ].join('\n');
