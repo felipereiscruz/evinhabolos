@@ -166,7 +166,7 @@ const MEU_NUMERO = '5527998973988';
 
 // Chave pix da Evinha — troque pela chave real (CPF, telefone ou email)
 const PIX_CHAVE = '27998973988';
-const PIX_NOME  = 'Eva Regina';
+const PIX_NOME  = 'Evinha Bolos';
 
 const app = initializeApp(FIREBASE_CONFIG);
 const db  = getDatabase(app);
@@ -184,13 +184,7 @@ onValue(ref(db, 'pedidos'), snap => {
   document.getElementById('fbStatus').style.color = 'rgba(255,100,100,.8)';
 });
 
-// ── Faturamento acumulado (nunca some ao apagar pedidos) ──
-async function somarFaturamento(valor) {
-  const fatRef = ref(db, 'faturamento_total');
-  const snap = await get(fatRef);
-  const atual = snap.val() || 0;
-  await update(ref(db), { faturamento_total: atual + valor });
-}
+
 
 // ── Render ──
 window.render = function() {
@@ -200,7 +194,7 @@ window.render = function() {
 
   const lista = filtro === 'todos' ? todos : todos.filter(p => p.status === filtro);
 
-  // Stats — usa faturamento_total do Firebase (persistente)
+  // Stats
   const pend = todos.filter(p => p.status === 'pendente').length;
   const conf = todos.filter(p => p.status === 'confirmado').length;
   document.getElementById('stP').textContent = pend;
@@ -208,11 +202,9 @@ window.render = function() {
   const badge = document.getElementById('badgePend');
   badge.textContent = pend; badge.className = 'badge' + (pend === 0 ? ' zero' : '');
 
-  // Busca faturamento persistente
-  get(ref(db, 'faturamento_total')).then(snap => {
-    const fat = snap.val() || 0;
-    document.getElementById('stF').textContent = 'R$' + fat.toFixed(0);
-  });
+  // Faturamento = soma dos pedidos confirmados ainda na lista
+  const fat = todos.filter(p => p.status === 'confirmado' && p.preco).reduce((s,p) => s + (+p.preco||0), 0);
+  document.getElementById('stF').textContent = 'R$' + fat.toFixed(0);
 
   // Banner hoje
   const hoje = new Date().toISOString().split('T')[0];
@@ -317,8 +309,6 @@ window.confirmar = async key => {
 
   await update(ref(db,'pedidos/'+key), {status:'confirmado', preco:precoVal, confirmedAt:new Date().toISOString()});
 
-  // Acumula no faturamento persistente
-  await somarFaturamento(precoVal);
 
   toast('✅ Pedido confirmado!');
 
@@ -372,7 +362,7 @@ window.apagarPedido = async key => {
     toast('⚠️ Confirme ou recuse antes de apagar');
     return;
   }
-  if (!confirm(`Apagar pedido de ${p.cliente}?\n\nO faturamento gerado será mantido.`)) return;
+  if (!confirm(`Apagar pedido de ${p.cliente}?`)) return;
   await remove(ref(db, 'pedidos/'+key));
   toast('🗑️ Pedido removido');
 };
