@@ -177,12 +177,9 @@ footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--muted);bor
     <h2 class="sec-title">Cobertura e decoração</h2>
     <p class="sec-desc">Como você quer que o bolo fique por fora?</p>
     <div class="opcoes-grid" id="coberturaGrid">
-      <div class="opcao-card" data-val="Chantilly"><div class="oc-icon">☁️</div><div class="oc-name">Chantilly</div></div>
-      <div class="opcao-card" data-val="Ganache de Chocolate"><div class="oc-icon">🍫</div><div class="oc-name">Ganache</div></div>
-      <div class="opcao-card" data-val="Pasta Americana"><div class="oc-icon">🎂</div><div class="oc-name">Pasta Americana</div></div>
-      <div class="opcao-card" data-val="Merengue"><div class="oc-icon">🤍</div><div class="oc-name">Merengue</div></div>
-      <div class="opcao-card" data-val="Buttercream"><div class="oc-icon">🧁</div><div class="oc-name">Buttercream</div></div>
-      <div class="opcao-card" data-val="Combinar com a Evinha"><div class="oc-icon">✨</div><div class="oc-name">Combinar</div></div>
+      <div class="opcao-card" data-val="Chantininho"><div class="oc-icon">☁️</div><div class="oc-name">Chantininho</div></div>
+      <div class="opcao-card" data-val="Ganache"><div class="oc-icon">🍫</div><div class="oc-name">Ganache</div></div>
+      <div class="opcao-card" data-val="Brigadeiro"><div class="oc-icon">🍬</div><div class="oc-name">Brigadeiro</div></div>
     </div>
     <div class="field" style="margin-top:16px;"><label>Como quer a decoração?</label><textarea id="decoracaoObs" placeholder="Ex: tema florido, cores azul e dourado, escrever 'Feliz Aniversário Ana'..."></textarea></div>
     <div class="nav-btns"><button class="btn-back" onclick="goStep(2)">← Voltar</button><button class="btn-next" onclick="goStep(4)">Próximo — Seus dados →</button></div>
@@ -198,8 +195,7 @@ footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--muted);bor
       <div class="field"><label>WhatsApp *</label><input type="tel" id="telInput" placeholder="(11) 99999-9999"></div>
     </div>
     <div class="field"><label>Data que precisa do bolo *</label><input type="date" id="dataInput"></div>
-    <div class="field"><label>Retirada ou entrega?</label><select id="entregaSelect"><option value="Retirada no local">🏠 Retirada no local</option><option value="Entrega">🚗 Entrega (combinar endereço)</option></select></div>
-    <div class="field" id="enderecoField" style="display:none"><label>Endereço para entrega</label><input type="text" id="enderecoInput" placeholder="Rua, número, bairro, cidade"></div>
+    <div class="field"><label>Retirada</label><div style="padding:14px 16px;background:#F8F0E8;border-radius:12px;font-size:15px;font-weight:700;color:var(--sub);">🏠 Retirada no local — combinamos o endereço pelo WhatsApp</div></div>
     <div class="field"><label>Observações gerais</label><textarea id="obsGeral" placeholder="Qualquer outra informação para a Evinha..."></textarea></div>
     <div class="nav-btns"><button class="btn-back" onclick="goStep(3)">← Voltar</button><button class="btn-next" onclick="irResumo()">Ver resumo →</button></div>
   </div>
@@ -219,7 +215,10 @@ footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--muted);bor
   <div class="suc-icon">🎉</div>
   <h2 class="suc-h">Pedido enviado!</h2>
   <p class="suc-p">A Evinha já recebeu e vai te chamar no WhatsApp com o valor e confirmação 💛</p>
-  <div class="suc-code" id="sucCode"></div><br>
+  <div class="suc-code" id="sucCode"></div>
+  <div style="background:#FFF8E7;border:1.5px solid #F0C040;border-radius:12px;padding:14px 18px;margin:16px 0;font-size:13px;color:#8A6000;line-height:1.7;text-align:left;">
+    ⚡ <strong>Atenção:</strong> Após a confirmação do pedido pela Evinha, será necessário pagar <strong>metade do valor total via PIX</strong> como entrada, antes de ela começar a fazer o bolo. O restante é pago na retirada. Ela enviará os dados pelo WhatsApp 💛
+  </div><br>
   <a id="wppLink" class="btn-wpp" href="#" target="_blank">💬 Abrir WhatsApp da Evinha</a>
   <p class="suc-note">Guarde o código acima para acompanhar seu pedido 😊</p>
 </div>
@@ -234,15 +233,15 @@ import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/10.12
 //  (Veja o LEIA-ME.txt para instruções passo a passo)
 // ══════════════════════════════════════════════════════
 const FIREBASE_CONFIG = {
-  apiKey:            "AIzaSyAzTnR7TfXrnZvYRYrrKBdI2yoqqZyC648",
-  authDomain:        "bolo-evinha.firebaseapp.com",
-  databaseURL:       "https://bolo-evinha-default-rtdb.firebaseio.com",
-  projectId:         "bolo-evinha",
-  storageBucket:     "bolo-evinha.firebasestorage.app",
-  messagingSenderId: "711837183882",
-  appId:             "1:711837183882:web:6ebaf9c5d726413b292273"
+  apiKey:            "COLE_AQUI",
+  authDomain:        "COLE_AQUI",
+  databaseURL:       "COLE_AQUI",   // ex: https://seu-projeto-default-rtdb.firebaseio.com
+  projectId:         "COLE_AQUI",
+  storageBucket:     "COLE_AQUI",
+  messagingSenderId: "COLE_AQUI",
+  appId:             "COLE_AQUI"
 };
-const WHATSAPP_EVINHA = '5527998973988'; // WhatsApp da Evinha
+const WHATSAPP_EVINHA = '5511999999999'; // ← DDI+DDD+número (só números)
 // ══════════════════════════════════════════════════════
 
 const ok = FIREBASE_CONFIG.apiKey !== "COLE_AQUI";
@@ -304,9 +303,7 @@ document.querySelectorAll('#coberturaGrid .opcao-card').forEach(c => {
 });
 
 // Entrega
-document.getElementById('entregaSelect').addEventListener('change', function(){
-  document.getElementById('enderecoField').style.display = this.value==='Entrega'?'block':'none';
-});
+// Apenas retirada no local
 
 // Data mínima
 const d2 = new Date(); d2.setDate(d2.getDate()+2);
@@ -336,8 +333,8 @@ window.irResumo = () => {
   if(!data){alert('Informe a data do bolo 📅');return;}
   const id='EV-'+Date.now().toString(36).toUpperCase();
   const df=new Date(data+'T12:00').toLocaleDateString('pt-BR');
-  const entr=document.getElementById('entregaSelect').value;
-  const end=document.getElementById('enderecoInput').value.trim();
+  const entr='Retirada no local';
+  const end='';
   pedido={
     id, timestamp:new Date().toISOString(), cliente:nome, telefone:tel,
     pessoas:+slider.value, formaIdeal:forma(+slider.value).t,
@@ -359,7 +356,7 @@ window.irResumo = () => {
     pedido.recheioObs?['📝 Obs. recheio',pedido.recheioObs]:null,
     ['✨ Cobertura',pedido.cobertura],
     pedido.decoracao?['🎨 Decoração',pedido.decoracao]:null,
-    ['📅 Data',df],['🚗 Entrega',entr+(end?' — '+end:'')],
+    ['📅 Data',df],['🏠 Retirada','No local — endereço combinado pelo WhatsApp'],
     pedido.obsGeral?['💬 Obs.',pedido.obsGeral]:null,
   ].filter(Boolean);
   document.getElementById('resumoBody').innerHTML=rows.map(([l,v])=>
