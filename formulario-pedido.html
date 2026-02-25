@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolos da Evinha 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#FEFAF5;--card:#FFFFFF;--text:#1E1208;--sub:#7A5C46;--accent:#C17B3F;--accent2:#8B4513;--rose:#F2D9C0;--border:#EDD9C5;--dark:#140C05;--muted:#A08070;}
+body{background:var(--bg);color:var(--text);font-family:'Mulish',sans-serif;min-height:100vh;}
+.hero{background:var(--dark);color:#fff;padding:70px 24px 90px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 70%,rgba(193,123,63,.28),transparent 55%),radial-gradient(ellipse 60% 80% at 85% 10%,rgba(139,69,19,.45),transparent 55%);}
+.circles{position:absolute;inset:0;overflow:hidden;}
+.circles span{position:absolute;border-radius:50%;border:1px solid rgba(242,217,192,.1);}
+.circles span:nth-child(1){width:300px;height:300px;top:-80px;right:-80px;}
+.circles span:nth-child(2){width:200px;height:200px;top:-30px;right:-30px;}
+.circles span:nth-child(3){width:150px;height:150px;bottom:-50px;left:-50px;}
+.hero-inner{position:relative;z-index:1;max-width:540px;margin:0 auto;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(193,123,63,.2);border:1px solid rgba(193,123,63,.35);color:#F2D9C0;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:30px;margin-bottom:28px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(46px,12vw,76px);line-height:1;font-weight:700;margin-bottom:10px;}
+.hero h1 em{font-style:italic;color:#F2D9C0;}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:rgba(255,255,255,.55);margin-bottom:20px;}
+.hero p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.45);max-width:380px;margin:0 auto;}
+.wave-wrap{background:var(--dark);line-height:0;}
+.wave-wrap svg{display:block;width:100%;}
+.steps-bar{display:flex;align-items:center;justify-content:center;padding:28px 24px 0;max-width:500px;margin:0 auto;}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;}
+.step-dot{width:34px;height:34px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:.3s;border:2px solid transparent;}
+.step-dot.active{background:var(--accent);color:#fff;}
+.step-dot.done{background:var(--accent2);color:#fff;}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);text-align:center;}
+.step-label.active{color:var(--accent);}
+.step-line{height:2px;flex:1;background:var(--border);margin-bottom:20px;transition:.3s;}
+.step-line.done{background:var(--accent2);}
+.section{display:none;padding:32px 20px 20px;max-width:600px;margin:0 auto;animation:fadeUp .4s ease;}
+.section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,6vw,36px);font-weight:700;line-height:1.1;margin-bottom:8px;}
+.sec-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+.pessoas-wrap{background:var(--card);border-radius:20px;padding:28px;box-shadow:0 2px 20px rgba(30,18,8,.06);margin-bottom:20px;}
+.pessoas-num{text-align:center;font-family:'Playfair Display',serif;font-size:72px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px;}
+.pessoas-label{text-align:center;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:24px;}
+input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--border);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(193,123,63,.4);}
+.slider-marks{display:flex;justify-content:space-between;margin-top:10px;}
+.slider-marks span{font-size:10px;font-weight:600;color:var(--muted);}
+.forma-info{background:linear-gradient(135deg,rgba(193,123,63,.1),rgba(193,123,63,.05));border:1px solid rgba(193,123,63,.2);border-radius:14px;padding:16px 20px;margin-top:20px;display:flex;align-items:center;gap:14px;}
+.forma-icon{font-size:32px;}
+.forma-text strong{display:block;font-size:15px;font-weight:700;color:var(--accent2);margin-bottom:2px;}
+.forma-text span{font-size:13px;color:var(--muted);}
+.recheio-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.chip{padding:8px 16px;border-radius:30px;border:1.5px solid var(--border);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;transition:.2s;color:var(--sub);user-select:none;}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+.chip.sel{background:var(--accent);border-color:var(--accent);color:#fff;}
+.add-recheio{display:flex;gap:8px;margin-bottom:16px;}
+.add-recheio input{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:'Mulish',sans-serif;font-size:14px;color:var(--text);background:var(--bg);outline:none;transition:.2s;}
+.add-recheio input:focus{border-color:var(--accent);background:#fff;}
+.btn-add{padding:12px 18px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-family:'Mulish',sans-serif;font-size:14px;font-weight:700;cursor:pointer;}
+.selected-recheios{margin-bottom:8px;}
+.sel-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(193,123,63,.12);border:1px solid rgba(193,123,63,.25);color:var(--accent2);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin:4px;}
+.sel-tag button{background:none;border:none;cursor:pointer;color:var(--accent);font-size:15px;line-height:1;padding:0;}
+.opcoes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:8px;}
+.opcao-card{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:.2s;}
+.opcao-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.opcao-card.sel{border-color:var(--accent);background:rgba(193,123,63,.07);}
+.oc-icon{font-size:28px;margin-bottom:8px;}
+.oc-name{font-size:13px;font-weight:700;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sub);margin-bottom:8px;}
+.field input,.field textarea,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:'Mulish',sans-serif;font-size:15px;color:var(--text);background:var(--bg);outline:none;transition:.2s;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);background:#fff;}
+.field textarea{resize:vertical;min-height:90px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:480px){.grid2{grid-template-columns:1fr;}}
+.resumo-card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 4px 30px rgba(30,18,8,.08);margin-bottom:20px;}
+.resumo-header{background:linear-gradient(135deg,var(--accent2),var(--dark));color:#fff;padding:24px;}
+.resumo-header h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
+.resumo-header p{font-size:13px;opacity:.65;}
+.resumo-body{padding:20px;}
+.resumo-row{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;gap:12px;}
+.resumo-row:last-child{border-bottom:none;}
+.r-label{color:var(--muted);font-weight:500;white-space:nowrap;}
+.r-val{font-weight:700;text-align:right;}
+.preco-aviso{background:rgba(193,123,63,.1);border:1px dashed rgba(193,123,63,.3);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--accent2);line-height:1.6;text-align:center;}
+.nav-btns{display:flex;gap:10px;padding:0 0 32px;}
+.btn-back{flex:1;padding:16px;border:1.5px solid var(--border);border-radius:14px;background:var(--card);color:var(--sub);font-family:'Mulish',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
+.btn-next{flex:2;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:14px;font-family:'Mulish',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
+.btn-next:disabled{opacity:.5;cursor:not-allowed;}
+.btn-full{flex:1 1 100%;}
+.success{display:none;text-align:center;padding:60px 24px;max-width:500px;margin:0 auto;}
+.success.show{display:block;}
+.suc-icon{font-size:80px;animation:pop .5s ease;margin-bottom:20px;}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.suc-h{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;margin-bottom:12px;}
+.suc-p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.suc-code{display:inline-block;background:var(--rose);color:var(--accent2);padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:24px;}
+.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 32px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,.3);}
+.suc-note{font-size:12px;color:var(--muted);margin-top:20px;line-height:1.6;}
+footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="circles"><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <div class="hero-pill">🎂 Encomendas</div>
+    <h1>Bolos da<br><em>Evinha</em></h1>
+    <div class="hero-sub">Feito com amor, do jeito que você imaginou</div>
+    <p>Monte seu bolo do zero — recheio, cobertura e tudo mais. A Evinha cuida do resto com todo carinho 💛</p>
+  </div>
+</header>
+<div class="wave-wrap"><svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="70"><path d="M0,70 C480,0 960,80 1440,20 L1440,70 Z" fill="#FEFAF5"/></svg></div>
+
+<div class="steps-bar" id="stepsBar">
+  <div class="step-item"><div class="step-dot active" id="sd1">1</div><div class="step-label active" id="sl1">Tamanho</div></div>
+  <div class="step-line" id="sl12"></div>
+  <div class="step-item"><div class="step-dot" id="sd2">2</div><div class="step-label" id="sl2">Recheio</div></div>
+  <div class="step-line" id="sl23"></div>
+  <div class="step-item"><div class="step-dot" id="sd3">3</div><div class="step-label" id="sl3">Cobertura</div></div>
+  <div class="step-line" id="sl34"></div>
+  <div class="step-item"><div class="step-dot" id="sd4">4</div><div class="step-label" id="sl4">Dados</div></div>
+  <div class="step-line" id="sl45"></div>
+  <div class="step-item"><div class="step-dot" id="sd5">5</div><div class="step-label" id="sl5">Resumo</div></div>
+</div>
+
+<div id="mainWrap">
+  <!-- STEP 1 -->
+  <div class="section active" id="step1">
+    <div class="sec-eyebrow">Passo 1 de 5</div>
+    <h2 class="sec-title">Para quantas pessoas?</h2>
+    <p class="sec-desc">A Evinha escolhe o tamanho da forma certo para o número de convidados.</p>
+    <div class="pessoas-wrap">
+      <div class="pessoas-num" id="pessoasNum">15</div>
+      <div class="pessoas-label">pessoas</div>
+      <input type="range" id="pessoasSlider" min="5" max="100" step="5" value="15">
+      <div class="slider-marks"><span>5</span><span>25</span><span>50</span><span>75</span><span>100+</span></div>
+      <div class="forma-info"><div class="forma-icon">🎂</div><div class="forma-text"><strong id="formaTexto">Forma média (20cm)</strong><span id="formaDesc">Ideal para festinhas e amigos</span></div></div>
+    </div>
+    <div class="field"><label>Qual é a ocasião? (opcional)</label><textarea id="ocasiaoInput" placeholder="Ex: aniversário de 15 anos, chá de bebê, casamento..."></textarea></div>
+    <div class="nav-btns"><button class="btn-next btn-full" onclick="goStep(2)">Próximo — Recheio →</button></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section" id="step2">
+    <div class="sec-eyebrow">Passo 2 de 5</div>
+    <h2 class="sec-title">Monte seu recheio</h2>
+    <p class="sec-desc">Clique nas sugestões ou escreva o que quiser. Pode combinar vários!</p>
+    <div class="recheio-chips" id="recheioChips">
+      <div class="chip" data-val="Brigadeiro">🍫 Brigadeiro</div>
+      <div class="chip" data-val="Doce de Leite">🥛 Doce de Leite</div>
+      <div class="chip" data-val="Morango">🍓 Morango</div>
+      <div class="chip" data-val="Nutella">🌰 Nutella</div>
+      <div class="chip" data-val="Maracujá">🌟 Maracujá</div>
+      <div class="chip" data-val="Leite Ninho">🥛 Leite Ninho</div>
+      <div class="chip" data-val="Limão">🍋 Limão</div>
+      <div class="chip" data-val="Nozes">🥜 Nozes</div>
+      <div class="chip" data-val="Framboesa">🫐 Framboesa</div>
+      <div class="chip" data-val="Abacaxi">🍍 Abacaxi</div>
+      <div class="chip" data-val="Coco">🥥 Coco</div>
+      <div class="chip" data-val="Caramelo">🍯 Caramelo</div>
+    </div>
+    <div class="add-recheio">
+      <input type="text" id="recheioCustom" placeholder="Outro recheio? Escreva aqui...">
+      <button class="btn-add" onclick="addRecheioCustom()">+ Adicionar</button>
+    </div>
+    <div class="selected-recheios" id="selectedRecheios"></div>
+    <div class="field" style="margin-top:12px;"><label>Observações sobre o recheio</label><textarea id="recheioObs" placeholder="Ex: pouco doce, alergia a nozes, mais recheio nas camadas..."></textarea></div>
+    <div class="nav-btns"><button class="btn-back" onclick="goStep(1)">← Voltar</button><button class="btn-next" onclick="goStep(3)">Próximo — Cobertura →</button></div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section" id="step3">
+    <div class="sec-eyebrow">Passo 3 de 5</div>
+    <h2 class="sec-title">Cobertura e decoração</h2>
+    <p class="sec-desc">Como você quer que o bolo fique por fora?</p>
+    <div class="opcoes-grid" id="coberturaGrid">
+      <div class="opcao-card" data-val="Chantilly"><div class="oc-icon">☁️</div><div class="oc-name">Chantilly</div></div>
+      <div class="opcao-card" data-val="Ganache de Chocolate"><div class="oc-icon">🍫</div><div class="oc-name">Ganache</div></div>
+      <div class="opcao-card" data-val="Pasta Americana"><div class="oc-icon">🎂</div><div class="oc-name">Pasta Americana</div></div>
+      <div class="opcao-card" data-val="Merengue"><div class="oc-icon">🤍</div><div class="oc-name">Merengue</div></div>
+      <div class="opcao-card" data-val="Buttercream"><div class="oc-icon">🧁</div><div class="oc-name">Buttercream</div></div>
+      <div class="opcao-card" data-val="Combinar com a Evinha"><div class="oc-icon">✨</div><div class="oc-name">Combinar</div></div>
+    </div>
+    <div class="field" style="margin-top:16px;"><label>Como quer a decoração?</label><textarea id="decoracaoObs" placeholder="Ex: tema florido, cores azul e dourado, escrever 'Feliz Aniversário Ana'..."></textarea></div>
+    <div class="nav-btns"><button class="btn-back" onclick="goStep(2)">← Voltar</button><button class="btn-next" onclick="goStep(4)">Próximo — Seus dados →</button></div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section" id="step4">
+    <div class="sec-eyebrow">Passo 4 de 5</div>
+    <h2 class="sec-title">Seus dados</h2>
+    <p class="sec-desc">Para a Evinha entrar em contato e combinar os detalhes 💛</p>
+    <div class="grid2">
+      <div class="field"><label>Seu nome *</label><input type="text" id="nomeInput" placeholder="Maria Silva"></div>
+      <div class="field"><label>WhatsApp *</label><input type="tel" id="telInput" placeholder="(11) 99999-9999"></div>
+    </div>
+    <div class="field"><label>Data que precisa do bolo *</label><input type="date" id="dataInput"></div>
+    <div class="field"><label>Retirada ou entrega?</label><select id="entregaSelect"><option value="Retirada no local">🏠 Retirada no local</option><option value="Entrega">🚗 Entrega (combinar endereço)</option></select></div>
+    <div class="field" id="enderecoField" style="display:none"><label>Endereço para entrega</label><input type="text" id="enderecoInput" placeholder="Rua, número, bairro, cidade"></div>
+    <div class="field"><label>Observações gerais</label><textarea id="obsGeral" placeholder="Qualquer outra informação para a Evinha..."></textarea></div>
+    <div class="nav-btns"><button class="btn-back" onclick="goStep(3)">← Voltar</button><button class="btn-next" onclick="irResumo()">Ver resumo →</button></div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section" id="step5">
+    <div class="sec-eyebrow">Passo 5 de 5</div>
+    <h2 class="sec-title">Confirme seu pedido</h2>
+    <p class="sec-desc">Revise tudo antes de enviar. A Evinha vai analisar e te chamar com o valor!</p>
+    <div class="resumo-card"><div class="resumo-header"><h3>Resumo do Pedido</h3><p id="resumoId">—</p></div><div class="resumo-body" id="resumoBody"></div></div>
+    <div class="preco-aviso">💬 <strong>O valor será informado pela Evinha</strong><br>Ela analisa e te chama no WhatsApp com o preço e confirmação!</div>
+    <div class="nav-btns"><button class="btn-back" onclick="goStep(4)">← Editar</button><button class="btn-next" id="btnEnviar" onclick="enviarPedido()">🎂 Enviar para a Evinha</button></div>
+  </div>
+</div>
+
+<div class="success" id="successScreen">
+  <div class="suc-icon">🎉</div>
+  <h2 class="suc-h">Pedido enviado!</h2>
+  <p class="suc-p">A Evinha já recebeu e vai te chamar no WhatsApp com o valor e confirmação 💛</p>
+  <div class="suc-code" id="sucCode"></div><br>
+  <a id="wppLink" class="btn-wpp" href="#" target="_blank">💬 Abrir WhatsApp da Evinha</a>
+  <p class="suc-note">Guarde o código acima para acompanhar seu pedido 😊</p>
+</div>
+<footer>🎂 Bolos da Evinha &nbsp;·&nbsp; Feito com muito amor e carinho</footer>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+// ══════════════════════════════════════════════════════
+//  🔧 COLE AQUI OS DADOS DO SEU FIREBASE
+//  (Veja o LEIA-ME.txt para instruções passo a passo)
+// ══════════════════════════════════════════════════════
+const FIREBASE_CONFIG = {
+  apiKey:            "AIzaSyAzTnR7TfXrnZvYRYrrKBdI2yoqqZyC648",
+  authDomain:        "bolo-evinha.firebaseapp.com",
+  databaseURL:       "https://bolo-evinha-default-rtdb.firebaseio.com",
+  projectId:         "bolo-evinha",
+  storageBucket:     "bolo-evinha.firebasestorage.app",
+  messagingSenderId: "711837183882",
+  appId:             "1:711837183882:web:6ebaf9c5d726413b292273"
+};
+const WHATSAPP_EVINHA = '5527998973988'; // WhatsApp da Evinha
+// ══════════════════════════════════════════════════════
+
+const ok = FIREBASE_CONFIG.apiKey !== "COLE_AQUI";
+let app, db;
+if (ok) { app = initializeApp(FIREBASE_CONFIG); db = getDatabase(app); }
+
+let step = 1, recheios = [], cobertura = '', pedido = {};
+
+// Slider
+const slider = document.getElementById('pessoasSlider');
+slider.addEventListener('input', () => {
+  const v = +slider.value;
+  document.getElementById('pessoasNum').textContent = v;
+  const {t,d} = forma(v);
+  document.getElementById('formaTexto').textContent = t;
+  document.getElementById('formaDesc').textContent = d;
+});
+function forma(n) {
+  if(n<=10) return {t:'Forma pequena (15cm)',d:'Perfeito para encontros íntimos'};
+  if(n<=20) return {t:'Forma média (20cm)',d:'Ideal para festinhas com amigos'};
+  if(n<=35) return {t:'Forma grande (25cm)',d:'Perfeito para festas e aniversários'};
+  if(n<=50) return {t:'Forma extra grande (30cm)',d:'Para festas maiores'};
+  if(n<=70) return {t:'Forma dupla ou 35cm',d:'Evinha indica o melhor formato'};
+  return {t:'Bolo especial (múltiplas formas)',d:'Evinha combina contigo'};
+}
+
+// Chips
+document.querySelectorAll('#recheioChips .chip').forEach(c => {
+  c.addEventListener('click', () => {
+    c.classList.toggle('sel');
+    const v = c.dataset.val;
+    recheios = c.classList.contains('sel') ? [...recheios, v] : recheios.filter(r=>r!==v);
+    renderSel();
+  });
+});
+function renderSel() {
+  document.getElementById('selectedRecheios').innerHTML = recheios.map(r =>
+    `<span class="sel-tag">${r}<button onclick="rmR('${r.replace(/'/g,"\\'")}')">×</button></span>`).join('');
+}
+window.rmR = r => {
+  recheios = recheios.filter(x=>x!==r);
+  document.querySelectorAll('#recheioChips .chip').forEach(c=>{ if(c.dataset.val===r) c.classList.remove('sel'); });
+  renderSel();
+};
+window.addRecheioCustom = () => {
+  const inp = document.getElementById('recheioCustom');
+  const v = inp.value.trim();
+  if(v && !recheios.includes(v)) { recheios.push(v); renderSel(); }
+  inp.value='';
+};
+document.getElementById('recheioCustom').addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();window.addRecheioCustom();} });
+
+// Cobertura
+document.querySelectorAll('#coberturaGrid .opcao-card').forEach(c => {
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('#coberturaGrid .opcao-card').forEach(x=>x.classList.remove('sel'));
+    c.classList.add('sel'); cobertura = c.dataset.val;
+  });
+});
+
+// Entrega
+document.getElementById('entregaSelect').addEventListener('change', function(){
+  document.getElementById('enderecoField').style.display = this.value==='Entrega'?'block':'none';
+});
+
+// Data mínima
+const d2 = new Date(); d2.setDate(d2.getDate()+2);
+document.getElementById('dataInput').min = d2.toISOString().split('T')[0];
+
+// Navegação
+window.goStep = n => {
+  document.getElementById('step'+step).classList.remove('active');
+  document.getElementById('step'+n).classList.add('active');
+  for(let i=1;i<=5;i++){
+    const dot=document.getElementById('sd'+i), lbl=document.getElementById('sl'+i);
+    dot.classList.remove('active','done'); lbl.classList.remove('active');
+    if(i<n){dot.classList.add('done');dot.textContent='✓';}
+    else if(i===n){dot.classList.add('active');dot.textContent=i;lbl.classList.add('active');}
+    else dot.textContent=i;
+  }
+  for(let i=1;i<=4;i++){const l=document.getElementById('sl'+i+(i+1));if(l)l.classList.toggle('done',i<n);}
+  step=n; window.scrollTo({top:0,behavior:'smooth'});
+};
+
+window.irResumo = () => {
+  const nome=document.getElementById('nomeInput').value.trim();
+  const tel=document.getElementById('telInput').value.trim();
+  const data=document.getElementById('dataInput').value;
+  if(!nome){alert('Informe seu nome 😊');return;}
+  if(!tel){alert('Informe seu WhatsApp 📱');return;}
+  if(!data){alert('Informe a data do bolo 📅');return;}
+  const id='EV-'+Date.now().toString(36).toUpperCase();
+  const df=new Date(data+'T12:00').toLocaleDateString('pt-BR');
+  const entr=document.getElementById('entregaSelect').value;
+  const end=document.getElementById('enderecoInput').value.trim();
+  pedido={
+    id, timestamp:new Date().toISOString(), cliente:nome, telefone:tel,
+    pessoas:+slider.value, formaIdeal:forma(+slider.value).t,
+    ocasiao:document.getElementById('ocasiaoInput').value.trim(),
+    recheios:[...recheios], recheioObs:document.getElementById('recheioObs').value.trim(),
+    cobertura:cobertura||'A combinar com a Evinha',
+    decoracao:document.getElementById('decoracaoObs').value.trim(),
+    dataEntrega:data, dataFormatada:df, entrega:entr,
+    endereco:entr==='Entrega'?end:'',
+    obsGeral:document.getElementById('obsGeral').value.trim(),
+    status:'pendente', preco:null
+  };
+  document.getElementById('resumoId').textContent='Código: '+id;
+  const rows=[
+    ['👤 Cliente',nome],['📱 WhatsApp',tel],
+    ['👥 Pessoas',pedido.pessoas+' pessoas'],['🎂 Forma',pedido.formaIdeal],
+    pedido.ocasiao?['🎉 Ocasião',pedido.ocasiao]:null,
+    ['🍰 Recheio',recheios.length?recheios.join(', '):'A combinar'],
+    pedido.recheioObs?['📝 Obs. recheio',pedido.recheioObs]:null,
+    ['✨ Cobertura',pedido.cobertura],
+    pedido.decoracao?['🎨 Decoração',pedido.decoracao]:null,
+    ['📅 Data',df],['🚗 Entrega',entr+(end?' — '+end:'')],
+    pedido.obsGeral?['💬 Obs.',pedido.obsGeral]:null,
+  ].filter(Boolean);
+  document.getElementById('resumoBody').innerHTML=rows.map(([l,v])=>
+    `<div class="resumo-row"><span class="r-label">${l}</span><span class="r-val">${v}</span></div>`).join('');
+  window.goStep(5);
+};
+
+window.enviarPedido = async () => {
+  if(!ok){alert('Configure o Firebase primeiro!\nAbra o LEIA-ME.txt para instruções.');return;}
+  const btn=document.getElementById('btnEnviar');
+  btn.textContent='⏳ Enviando...'; btn.disabled=true;
+  try {
+    await push(ref(db,'pedidos'), pedido);
+    document.getElementById('mainWrap').style.display='none';
+    document.getElementById('stepsBar').style.display='none';
+    document.getElementById('successScreen').classList.add('show');
+    document.getElementById('sucCode').textContent=pedido.id;
+    const p=pedido;
+    const msg=[
+      `🎂 *Novo Pedido — ${p.id}*`,``,
+      `👤 *${p.cliente}*  📱 ${p.telefone}`,
+      `📅 ${p.dataFormatada}  👥 ${p.pessoas} pessoas (${p.formaIdeal})`,
+      p.ocasiao?`🎉 ${p.ocasiao}`:'',``,
+      `🍰 *Recheio:* ${p.recheios.length?p.recheios.join(', '):'A combinar'}`,
+      p.recheioObs?`   └ ${p.recheioObs}`:'',
+      `✨ *Cobertura:* ${p.cobertura}`,
+      p.decoracao?`🎨 ${p.decoracao}`:'',``,
+      `🚗 ${p.entrega}${p.endereco?' — '+p.endereco:''}`,
+      p.obsGeral?`💬 ${p.obsGeral}`:'',
+    ].filter(v=>v!==undefined).join('\n').replace(/\n{3,}/g,'\n\n').trim();
+    document.getElementById('wppLink').href=`https://wa.me/${WHATSAPP_EVINHA}?text=${encodeURIComponent(msg)}`;
+  } catch(e) {
+    btn.textContent='🎂 Enviar para a Evinha'; btn.disabled=false;
+    alert('Erro ao salvar pedido:\n'+e.message);
+  }
+};
+</script>
+</body>
+</html>
