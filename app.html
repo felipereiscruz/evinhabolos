@@ -20,7 +20,6 @@
 }
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:80px;}
 
-/* HEADER */
 .header{background:linear-gradient(160deg,var(--dark) 0%,#2C1005 100%);color:#fff;padding:52px 18px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 24px rgba(20,12,5,.4);}
 .htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .htop h1{font-size:21px;font-weight:900;}
@@ -31,19 +30,12 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .badge.zero{background:rgba(255,255,255,.12);}
 .btn-ref{background:rgba(255,255,255,.1);border:none;color:#fff;width:38px;height:38px;border-radius:12px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.3s;}
 .btn-ref:active{transform:rotate(180deg);}
-
-/* STATUS FIREBASE */
 .fb-status{padding:6px 18px 14px;font-size:11px;font-weight:700;}
-.fb-status.ok{color:rgba(100,255,150,.7);}
-.fb-status.err{color:rgba(255,100,100,.8);}
-
-/* TABS */
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:0 18px 14px;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none;}
 .tab{flex-shrink:0;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:none;color:rgba(255,255,255,.5);background:transparent;transition:.2s;white-space:nowrap;}
 .tab.active{background:rgba(255,255,255,.15);color:#fff;}
 
-/* STATS */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
 .stat{background:var(--card);padding:14px 8px;text-align:center;}
 .stat-v{font-size:22px;font-weight:900;line-height:1;}
@@ -52,7 +44,6 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .stat-v.a{color:var(--accent);}
 .stat-l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:3px;}
 
-/* CARDS */
 .cards{padding:12px;display:flex;flex-direction:column;gap:12px;}
 .empty{text-align:center;padding:80px 24px;}
 .empty-icon{font-size:56px;margin-bottom:16px;opacity:.4;}
@@ -62,15 +53,22 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .card{background:var(--card);border-radius:18px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 2px 12px rgba(30,18,8,.05);animation:sIn .3s ease both;}
 @keyframes sIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card.pendente{border-left:4px solid var(--yellow);}
-.card.confirmado{border-left:4px solid var(--green);opacity:.82;}
-.card.recusado{border-left:4px solid var(--red);opacity:.6;}
+.card.confirmado{border-left:4px solid var(--green);}
+.card.recusado{border-left:4px solid var(--red);opacity:.65;}
 
 .ctop{padding:13px 14px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.ctop-left{display:flex;flex-direction:column;gap:4px;}
 .cid{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.ctop-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .spill{font-size:10px;font-weight:800;padding:4px 10px;border-radius:10px;}
 .spill.pendente{background:rgba(200,134,10,.15);color:#8A5A00;}
 .spill.confirmado{background:rgba(39,132,90,.15);color:#1A5E3A;}
 .spill.recusado{background:rgba(184,48,48,.12);color:var(--red);}
+
+/* LIXEIRA */
+.btn-lixo{background:rgba(184,48,48,.1);border:none;color:var(--red);width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0;}
+.btn-lixo:active{background:rgba(184,48,48,.2);}
+.btn-lixo-pendente{background:rgba(160,128,112,.1);color:var(--muted);}
 
 .cbody{padding:12px 14px 14px;}
 .cnome{font-size:18px;font-weight:900;margin-bottom:2px;}
@@ -79,7 +77,6 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .ctag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;}
 .ctag.p{background:rgba(193,123,63,.1);color:var(--accent2);}
 .ctag.d{background:rgba(39,132,90,.1);color:#1A5E3A;}
-.ctag.e{background:rgba(30,18,8,.06);color:#5A3A28;}
 
 .details{margin-bottom:12px;}
 .drow{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #F8F0E8;}
@@ -87,7 +84,6 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .dlabel{font-weight:800;color:var(--muted);white-space:nowrap;min-width:82px;font-size:11px;}
 .dval{color:var(--text);font-size:12px;line-height:1.4;}
 
-/* BLOCO PREÇO */
 .preco-bloco{background:linear-gradient(135deg,rgba(193,123,63,.09),rgba(193,123,63,.03));border:1.5px solid rgba(193,123,63,.2);border-radius:14px;padding:14px;margin-bottom:12px;}
 .preco-title{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent2);margin-bottom:10px;}
 .preco-row{display:flex;align-items:center;gap:8px;}
@@ -95,8 +91,8 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .preco-inp{flex:1;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:var(--text);background:#fff;outline:none;transition:.2s;}
 .preco-inp:focus{border-color:var(--accent);}
 .preco-ok{font-size:22px;font-weight:900;color:var(--green);text-align:center;padding:6px 0;}
+.pix-info{margin-top:8px;font-size:11px;color:var(--muted);text-align:center;font-weight:600;}
 
-/* AÇÕES */
 .actions{display:grid;gap:8px;}
 .g2{grid-template-columns:1fr 1fr;}
 .btn-a{padding:13px;border-radius:12px;border:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px;}
@@ -105,25 +101,16 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
 .btn-wpp{background:#25D366;color:#fff;}
 .btn-a:active{filter:brightness(.88);}
 
-/* NAV */
 .bnav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card);border-top:1.5px solid var(--border);padding:8px 0 calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;}
-.nbtn{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:800;color:var(--muted);cursor:pointer;padding:4px 14px;border-radius:12px;border:none;background:none;text-transform:uppercase;letter-spacing:.5px;}
+.nbtn{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:800;color:var(--muted);cursor:pointer;padding:4px 20px;border-radius:12px;border:none;background:none;text-transform:uppercase;letter-spacing:.5px;}
 .nbtn.active{color:var(--accent);}
 .nicon{font-size:22px;line-height:1;}
 
-/* TOAST */
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--dark);color:#fff;padding:11px 22px;border-radius:50px;font-size:13px;font-weight:700;opacity:0;transition:.3s;z-index:400;white-space:nowrap;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* HOJE BANNER */
 .hoje-banner{margin:10px 12px 0;padding:12px 16px;background:linear-gradient(135deg,rgba(39,132,90,.12),rgba(39,132,90,.05));border:1.5px solid rgba(39,132,90,.2);border-radius:14px;font-size:13px;font-weight:700;color:#1A5E3A;display:none;}
-
-/* PWA */
 .pwa{margin:12px 12px 0;padding:12px 16px;background:rgba(193,123,63,.08);border:1.5px dashed rgba(193,123,63,.25);border-radius:14px;font-size:12px;color:var(--accent2);font-weight:700;display:flex;align-items:center;gap:10px;}
-
-/* Config warning */
-.cfg-warn{background:#fff3cd;border:1.5px solid #ffc107;border-radius:12px;padding:14px 16px;margin:12px;font-size:13px;color:#856404;line-height:1.7;}
-.cfg-warn strong{display:block;margin-bottom:4px;}
 </style>
 </head>
 <body>
@@ -151,33 +138,21 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-
   <div class="stat"><div class="stat-v a" id="stF">R$0</div><div class="stat-l">Faturamento</div></div>
 </div>
 
-<div class="cfg-warn" id="cfgWarn">
-  <strong>⚙️ Configure o Firebase!</strong>
-  Abra este arquivo num editor de texto e cole seus dados do Firebase onde indicado.<br>
-  Veja o arquivo <b>LEIA-ME.txt</b> para o passo a passo completo.
-</div>
-
-<div class="pwa" id="pwaHint">📲 <span>No Chrome: <b>⋮ → Adicionar à tela inicial</b> para usar como app!</span></div>
+<div class="pwa" id="pwaHint">📲 <span>Chrome: <b>⋮ → Adicionar à tela inicial</b> para usar como app!</span></div>
 <div class="hoje-banner" id="hojeBanner"></div>
 <div class="cards" id="cardsEl"></div>
 
 <nav class="bnav">
   <button class="nbtn active" onclick="render()"><span class="nicon">🏠</span>Início</button>
   <button class="nbtn" id="navHoje"><span class="nicon">📅</span>Hoje</button>
-  <button class="nbtn" id="navTeste"><span class="nicon">🧪</span>Teste</button>
-  <button class="nbtn" id="navLimpar"><span class="nicon">🗑️</span>Limpar</button>
 </nav>
 
 <div class="toast" id="toast"></div>
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getDatabase, ref, onValue, update, push, remove, query, orderByChild } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+import { getDatabase, ref, onValue, update, remove, get } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-// ══════════════════════════════════════════════════════
-//  🔧 COLE AQUI OS DADOS DO SEU FIREBASE
-//  (os mesmos dados do formulario-pedido.html)
-// ══════════════════════════════════════════════════════
 const FIREBASE_CONFIG = {
   apiKey:            "AIzaSyAzTnR7TfXrnZvYRYrrKBdI2yoqqZyC648",
   authDomain:        "bolo-evinha.firebaseapp.com",
@@ -187,30 +162,34 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "711837183882",
   appId:             "1:711837183882:web:6ebaf9c5d726413b292273"
 };
-const MEU_NUMERO = '5527998973988'; // WhatsApp da Evinha
-// ══════════════════════════════════════════════════════
+const MEU_NUMERO = '5527998973988';
 
-const configurado = FIREBASE_CONFIG.apiKey !== "COLE_AQUI";
-let db, pedidosMap = {}, filtro = 'todos';
+// Chave pix da Evinha — troque pela chave real (CPF, telefone ou email)
+const PIX_CHAVE = '27998973988';
+const PIX_NOME  = 'Evinha Bolos';
 
-if (configurado) {
-  document.getElementById('cfgWarn').style.display = 'none';
-  const app = initializeApp(FIREBASE_CONFIG);
-  db = getDatabase(app);
-  // Escuta em tempo real — qualquer novo pedido aparece na hora!
-  const pedidosRef = ref(db, 'pedidos');
-  onValue(pedidosRef, snap => {
-    pedidosMap = snap.val() || {};
-    render();
-    document.getElementById('fbStatus').textContent = '🟢 Conectado ao Firebase';
-    document.getElementById('fbStatus').style.color = 'rgba(100,255,150,.7)';
-  }, err => {
-    document.getElementById('fbStatus').textContent = '🔴 Erro: ' + err.message;
-    document.getElementById('fbStatus').style.color = 'rgba(255,100,100,.8)';
-  });
-} else {
-  document.getElementById('fbStatus').textContent = '🔴 Firebase não configurado';
+const app = initializeApp(FIREBASE_CONFIG);
+const db  = getDatabase(app);
+
+let pedidosMap = {}, filtro = 'todos';
+
+// ── Escuta em tempo real ──
+onValue(ref(db, 'pedidos'), snap => {
+  pedidosMap = snap.val() || {};
+  render();
+  document.getElementById('fbStatus').textContent = '🟢 Conectado';
+  document.getElementById('fbStatus').style.color = 'rgba(100,255,150,.7)';
+}, err => {
+  document.getElementById('fbStatus').textContent = '🔴 Erro: ' + err.message;
   document.getElementById('fbStatus').style.color = 'rgba(255,100,100,.8)';
+});
+
+// ── Faturamento acumulado (nunca some ao apagar pedidos) ──
+async function somarFaturamento(valor) {
+  const fatRef = ref(db, 'faturamento_total');
+  const snap = await get(fatRef);
+  const atual = snap.val() || 0;
+  await update(ref(db), { faturamento_total: atual + valor });
 }
 
 // ── Render ──
@@ -219,169 +198,254 @@ window.render = function() {
     .map(([key, p]) => ({...p, _key: key}))
     .sort((a,b) => (b.timestamp||'').localeCompare(a.timestamp||''));
 
-  const lista = filtro === 'todos' ? todos : todos.filter(p=>p.status===filtro);
+  const lista = filtro === 'todos' ? todos : todos.filter(p => p.status === filtro);
 
-  // Stats
-  const pend = todos.filter(p=>p.status==='pendente').length;
-  const conf = todos.filter(p=>p.status==='confirmado').length;
-  const fat = todos.filter(p=>p.status==='confirmado'&&p.preco).reduce((s,p)=>s+(+p.preco||0),0);
+  // Stats — usa faturamento_total do Firebase (persistente)
+  const pend = todos.filter(p => p.status === 'pendente').length;
+  const conf = todos.filter(p => p.status === 'confirmado').length;
   document.getElementById('stP').textContent = pend;
   document.getElementById('stC').textContent = conf;
-  document.getElementById('stF').textContent = 'R$'+fat.toFixed(0);
   const badge = document.getElementById('badgePend');
-  badge.textContent = pend; badge.className='badge'+(pend===0?' zero':'');
+  badge.textContent = pend; badge.className = 'badge' + (pend === 0 ? ' zero' : '');
 
-  // Hoje
+  // Busca faturamento persistente
+  get(ref(db, 'faturamento_total')).then(snap => {
+    const fat = snap.val() || 0;
+    document.getElementById('stF').textContent = 'R$' + fat.toFixed(0);
+  });
+
+  // Banner hoje
   const hoje = new Date().toISOString().split('T')[0];
-  const hj = todos.filter(p=>p.dataEntrega===hoje&&p.status==='confirmado');
+  const hj = todos.filter(p => p.dataEntrega === hoje && p.status === 'confirmado');
   const hojeBanner = document.getElementById('hojeBanner');
-  if(hj.length){hojeBanner.style.display='block';hojeBanner.innerHTML=`📅 <strong>${hj.length} entrega(s) hoje!</strong> ${hj.map(p=>p.cliente).join(', ')}`;}
-  else hojeBanner.style.display='none';
+  if (hj.length) { hojeBanner.style.display = 'block'; hojeBanner.innerHTML = `📅 <strong>${hj.length} retirada(s) hoje!</strong> ${hj.map(p=>p.cliente).join(', ')}`; }
+  else hojeBanner.style.display = 'none';
 
-  if(!lista.length){
-    const msgs={todos:'Nenhum pedido ainda.\nQuando um cliente pedir, aparece aqui! 🎂',pendente:'Sem novos pedidos 🎉',confirmado:'Nenhum confirmado ainda.',recusado:'Nenhum recusado.'};
-    document.getElementById('cardsEl').innerHTML=`<div class="empty"><div class="empty-icon">🎂</div><h3>Tudo vazio</h3><p>${msgs[filtro]||''}</p></div>`;
+  if (!lista.length) {
+    const msgs = {todos:'Nenhum pedido ainda.\nQuando um cliente pedir, aparece aqui! 🎂',pendente:'Sem novos pedidos 🎉',confirmado:'Nenhum confirmado ainda.',recusado:'Nenhum recusado.'};
+    document.getElementById('cardsEl').innerHTML = `<div class="empty"><div class="empty-icon">🎂</div><h3>Tudo vazio</h3><p>${msgs[filtro]||''}</p></div>`;
     return;
   }
 
-  document.getElementById('cardsEl').innerHTML = lista.map((p,i) => {
-    const df = p.dataFormatada || (p.dataEntrega?new Date(p.dataEntrega+'T12:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}):'—');
-    const sl = {pendente:'⏳ Novo pedido',confirmado:'✅ Confirmado',recusado:'❌ Recusado'}[p.status]||p.status;
+  document.getElementById('cardsEl').innerHTML = lista.map((p, i) => {
+    const df = p.dataFormatada || (p.dataEntrega ? new Date(p.dataEntrega+'T12:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}) : '—');
+    const sl = {pendente:'⏳ Novo pedido', confirmado:'✅ Confirmado', recusado:'❌ Recusado'}[p.status] || p.status;
+
     const detalheRows = [
       ['Pessoas', (p.pessoas||'?')+' pessoas'+(p.formaIdeal?' ('+p.formaIdeal+')':'')],
-      p.ocasiao?['Ocasião',p.ocasiao]:null,
-      ['Recheio', p.recheios&&p.recheios.length?p.recheios.join(', '):'A combinar'],
-      p.recheioObs?['Obs. recheio',p.recheioObs]:null,
-      ['Cobertura', p.cobertura||'A combinar'],
-      p.decoracao?['Decoração',p.decoracao]:null,
-      ['Entrega', (p.entrega||'—')+(p.endereco?' — '+p.endereco:'')],
-      p.obsGeral?['Obs.',p.obsGeral]:null,
+      p.ocasiao ? ['Ocasião', p.ocasiao] : null,
+      ['Recheio', p.recheios&&p.recheios.length ? p.recheios.join(', ') : 'A combinar'],
+      p.recheioObs ? ['Obs. recheio', p.recheioObs] : null,
+      ['Cobertura', p.cobertura || 'A combinar'],
+      p.decoracao ? ['Decoração', p.decoracao] : null,
+      ['Retirada', 'No local'],
+      p.obsGeral ? ['Obs.', p.obsGeral] : null,
     ].filter(Boolean);
 
-    const precoBloco = p.status==='pendente'
-      ? `<div class="preco-bloco"><div class="preco-title">💰 Defina o valor do bolo</div><div class="preco-row"><span class="preco-sym">R$</span><input class="preco-inp" type="number" id="preco-${p._key}" placeholder="0,00" min="0" step="0.01" inputmode="decimal"></div></div>`
-      : p.preco ? `<div class="preco-bloco"><div class="preco-title">💰 Valor cobrado</div><div class="preco-ok">R$ ${(+p.preco).toFixed(2).replace('.',',')}</div></div>` : '';
+    // Lixeira: pendentes só mostram lixeira acinzentada (confirmar/recusar antes de apagar)
+    // confirmados e recusados mostram lixeira vermelha
+    const lixeiraClass = p.status === 'pendente' ? 'btn-lixo btn-lixo-pendente' : 'btn-lixo';
+    const lixeiraTip = p.status === 'pendente' ? 'Confirme ou recuse antes de apagar' : 'Apagar pedido';
 
-    const acoes = p.status==='pendente'
-      ? `<div class="actions g2"><button class="btn-a btn-conf" onclick="confirmar('${p._key}')">✅ Confirmar</button><button class="btn-a btn-rec" onclick="recusar('${p._key}')">❌ Recusar</button></div><div class="actions" style="margin-top:8px"><button class="btn-a btn-wpp" onclick="chamarWpp('${p._key}')">💬 Chamar no WhatsApp</button></div>`
-      : p.status!=='recusado' ? `<div class="actions"><button class="btn-a btn-wpp" onclick="chamarWpp('${p._key}')">💬 WhatsApp do cliente</button></div>` : '';
+    const precoBloco = p.status === 'pendente'
+      ? `<div class="preco-bloco">
+           <div class="preco-title">💰 Defina o valor total do bolo</div>
+           <div class="preco-row">
+             <span class="preco-sym">R$</span>
+             <input class="preco-inp" type="number" id="preco-${p._key}" placeholder="0,00" min="0" step="0.01" inputmode="decimal">
+           </div>
+           <div class="pix-info">⚡ O cliente pagará metade via PIX antes de começar</div>
+         </div>`
+      : p.preco
+        ? `<div class="preco-bloco">
+             <div class="preco-title">💰 Valor cobrado</div>
+             <div class="preco-ok">R$ ${(+p.preco).toFixed(2).replace('.',',')}</div>
+             <div class="pix-info">Entrada PIX: R$ ${((+p.preco)/2).toFixed(2).replace('.',',')} • Restante na retirada</div>
+           </div>`
+        : '';
 
-    return `<div class="card ${p.status}" style="animation-delay:${i*.04}s">
-      <div class="ctop"><div class="cid">${p.id||p._key}</div><span class="spill ${p.status}">${sl}</span></div>
+    const acoes = p.status === 'pendente'
+      ? `<div class="actions g2">
+           <button class="btn-a btn-conf" onclick="confirmar('${p._key}')">✅ Confirmar</button>
+           <button class="btn-a btn-rec"  onclick="recusar('${p._key}')">❌ Recusar</button>
+         </div>
+         <div class="actions" style="margin-top:8px">
+           <button class="btn-a btn-wpp" onclick="chamarWpp('${p._key}')">💬 Chamar no WhatsApp</button>
+         </div>`
+      : p.status !== 'recusado'
+        ? `<div class="actions"><button class="btn-a btn-wpp" onclick="chamarWpp('${p._key}')">💬 WhatsApp do cliente</button></div>`
+        : '';
+
+    return `
+    <div class="card ${p.status}" style="animation-delay:${i*.04}s" id="card-${p._key}">
+      <div class="ctop">
+        <div class="ctop-left">
+          <div class="cid">${p.id||p._key}</div>
+        </div>
+        <div class="ctop-right">
+          <span class="spill ${p.status}">${sl}</span>
+          <button class="${lixeiraClass}" onclick="apagarPedido('${p._key}')" title="${lixeiraTip}">🗑️</button>
+        </div>
+      </div>
       <div class="cbody">
         <div class="cnome">${p.cliente||'—'}</div>
         <div class="ctel">📱 ${p.telefone||'—'}</div>
         <div class="ctags">
           <span class="ctag p">👥 ${p.pessoas||'?'} pessoas</span>
           <span class="ctag d">📅 ${df}</span>
-          <span class="ctag e">${p.entrega==='Entrega'?'🚗 Entrega':'🏠 Retirada'}</span>
         </div>
         <div class="details">${detalheRows.map(([l,v])=>`<div class="drow"><span class="dlabel">${l}</span><span class="dval">${v}</span></div>`).join('')}</div>
-        ${precoBloco}${acoes}
+        ${precoBloco}
+        ${acoes}
       </div>
     </div>`;
   }).join('');
 };
+
+// ── Gera payload PIX copia-e-cola ──
+function gerarPixPayload(chave, nome, valor, txid) {
+  function campo(id, val) {
+    const len = val.length.toString().padStart(2,'0');
+    return id + len + val;
+  }
+  const merchantAccountInfo = campo('00','BR.GOV.BCB.PIX') + campo('01', chave);
+  const mai = campo('26', merchantAccountInfo);
+  const nomeFormatado = nome.normalize('NFD').replace(/[\u0300-\u036f]/g,'').substring(0,25).toUpperCase();
+  const valorStr = valor.toFixed(2);
+  const txidFormatado = (txid||'***').substring(0,25).replace(/\s/g,'');
+
+  let payload = campo('00','01') + mai + campo('52','0000') + campo('53','986')
+    + campo('54', valorStr) + campo('58','BR') + campo('59', nomeFormatado)
+    + campo('60','Vitoria') + campo('62', campo('05', txidFormatado));
+
+  // CRC16
+  payload += '6304';
+  let crc = 0xFFFF;
+  for (let i=0; i<payload.length; i++) {
+    crc ^= payload.charCodeAt(i) << 8;
+    for (let j=0; j<8; j++) crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+  }
+  return payload + (crc & 0xFFFF).toString(16).toUpperCase().padStart(4,'0');
+}
 
 // ── Confirmar ──
 window.confirmar = async key => {
   const p = {...pedidosMap[key], _key: key};
   const precoInp = document.getElementById('preco-'+key);
   const precoVal = precoInp ? parseFloat(precoInp.value)||null : null;
+
+  if (!precoVal || precoVal <= 0) {
+    toast('⚠️ Defina o valor antes de confirmar!');
+    if (precoInp) precoInp.focus();
+    return;
+  }
+
   await update(ref(db,'pedidos/'+key), {status:'confirmado', preco:precoVal, confirmedAt:new Date().toISOString()});
+
+  // Acumula no faturamento persistente
+  await somarFaturamento(precoVal);
+
   toast('✅ Pedido confirmado!');
-  const df = p.dataFormatada || (p.dataEntrega?new Date(p.dataEntrega+'T12:00').toLocaleDateString('pt-BR'):'—');
-  const precoStr = precoVal ? `R$ ${precoVal.toFixed(2).replace('.',',')}` : 'a combinar';
-  const msg = `Oi ${p.cliente}! 🎂\n\nSeu pedido foi *CONFIRMADO*! 🎉\n\n🎂 ${p.recheios&&p.recheios.length?p.recheios.join(', '):'Combinado'}\n📅 Data: ${df}\n💰 Valor: *${precoStr}*\n\nQualquer dúvida me chama aqui! 💛`;
+
+  const df = p.dataFormatada || (p.dataEntrega ? new Date(p.dataEntrega+'T12:00').toLocaleDateString('pt-BR') : '—');
+  const entrada = precoVal / 2;
+  const entradaStr = `R$ ${entrada.toFixed(2).replace('.',',')}`;
+  const totalStr   = `R$ ${precoVal.toFixed(2).replace('.',',')}`;
+
+  // Gera PIX copia-e-cola
+  const pixPayload = gerarPixPayload(PIX_CHAVE, PIX_NOME, entrada, key.substring(0,10));
+
+  const msg = [
+    `Oi ${p.cliente}! 🎂`,
+    ``,
+    `Seu pedido foi *CONFIRMADO*! 🎉`,
+    ``,
+    `🎂 Recheio: ${p.recheios&&p.recheios.length ? p.recheios.join(', ') : 'Combinado'}`,
+    `✨ Cobertura: ${p.cobertura||'Combinado'}`,
+    `📅 Data de retirada: ${df}`,
+    `💰 Valor total: *${totalStr}*`,
+    ``,
+    `━━━━━━━━━━━━━━━━━━`,
+    `⚡ *ENTRADA VIA PIX: ${entradaStr}*`,
+    `Para garantir seu pedido, por favor pague a entrada antes de eu começar a fazer 😊`,
+    ``,
+    `🔑 *Chave PIX:* \`${PIX_CHAVE}\``,
+    ``,
+    `📋 *PIX Copia e Cola:*`,
+    `\`${pixPayload}\``,
+    `━━━━━━━━━━━━━━━━━━`,
+    ``,
+    `O restante (${totalStr} - ${entradaStr} = R$ ${entrada.toFixed(2).replace('.',',')}) paga na retirada 💛`,
+    ``,
+    `Qualquer dúvida me chama aqui! 🎂`,
+  ].join('\n');
+
   const tel = (p.telefone||'').replace(/\D/g,'');
-  if(tel) window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(msg)}`,'_blank');
+  if (tel) window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 // ── Recusar ──
 window.recusar = async key => {
-  if(!confirm('Recusar este pedido?')) return;
+  if (!confirm('Recusar este pedido?')) return;
   const p = pedidosMap[key];
   await update(ref(db,'pedidos/'+key), {status:'recusado'});
   toast('❌ Pedido recusado');
   const msg = `Oi ${p.cliente}! 😔\n\nInfelizmente não vou conseguir atender seu pedido para essa data.\n\nMe chama aqui para tentarmos outra data! Vai ser um prazer fazer seu bolo 🎂💛`;
   const tel = (p.telefone||'').replace(/\D/g,'');
-  if(tel) window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(msg)}`,'_blank');
+  if (tel) window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
+// ── Apagar pedido (sem apagar faturamento) ──
+window.apagarPedido = async key => {
+  const p = pedidosMap[key];
+  if (p.status === 'pendente') {
+    toast('⚠️ Confirme ou recuse antes de apagar');
+    return;
+  }
+  if (!confirm(`Apagar pedido de ${p.cliente}?\n\nO faturamento gerado será mantido.`)) return;
+  await remove(ref(db, 'pedidos/'+key));
+  toast('🗑️ Pedido removido');
 };
 
 // ── WhatsApp ──
 window.chamarWpp = key => {
   const p = pedidosMap[key];
   const tel = (p.telefone||'').replace(/\D/g,'');
-  if(!tel) return;
-  window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(`Oi ${p.cliente}! 🎂 Aqui é a Evinha, estou vendo seu pedido...`)}`,'_blank');
+  if (!tel) return;
+  window.open(`https://wa.me/55${tel}?text=${encodeURIComponent(`Oi ${p.cliente}! 🎂 Aqui é a Evinha, tudo bem?`)}`, '_blank');
 };
 
 // ── Tabs ──
 document.querySelectorAll('.tab').forEach(t => {
   t.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active'); filtro=t.dataset.tab; render();
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active'); filtro = t.dataset.tab; render();
   });
 });
 
 // ── Refresh ──
-document.getElementById('btnRef').addEventListener('click', ()=>toast('🔄 Atualizando...'));
+document.getElementById('btnRef').addEventListener('click', () => toast('🔄 Atualizando...'));
 
 // ── Hoje ──
 document.getElementById('navHoje').addEventListener('click', () => {
-  filtro='confirmado';
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  filtro = 'confirmado';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelector('[data-tab="confirmado"]').classList.add('active');
   render(); toast('📅 Mostrando confirmados');
 });
 
-// ── Limpar recusados ──
-document.getElementById('navLimpar').addEventListener('click', async () => {
-  if(!configurado){toast('Configure o Firebase primeiro!');return;}
-  if(!confirm('Remover todos os pedidos recusados?')) return;
-  const prom = Object.entries(pedidosMap)
-    .filter(([,p])=>p.status==='recusado')
-    .map(([key])=>remove(ref(db,'pedidos/'+key)));
-  await Promise.all(prom);
-  toast('🗑️ Recusados removidos');
-});
-
-// ── Pedido de TESTE ──
-document.getElementById('navTeste').addEventListener('click', async () => {
-  if(!configurado){toast('Configure o Firebase primeiro!');return;}
-  const fake = {
-    id:'EV-TESTE'+Math.random().toString(36).substr(2,4).toUpperCase(),
-    timestamp:new Date().toISOString(),
-    cliente:'Maria Teste',telefone:'(11) 98888-1234',
-    pessoas:20,formaIdeal:'Forma média (20cm)',
-    ocasiao:'Aniversário de 10 anos',
-    recheios:['Brigadeiro','Morango','Leite Ninho'],
-    recheioObs:'Pouco açúcar, por favor',
-    cobertura:'Chantilly',
-    decoracao:'Tema princesas, rosa e dourado, escrever Feliz Aniversário Júlia',
-    dataEntrega:new Date(Date.now()+3*86400000).toISOString().split('T')[0],
-    dataFormatada:new Date(Date.now()+3*86400000).toLocaleDateString('pt-BR'),
-    entrega:'Retirada no local',endereco:'',
-    obsGeral:'Sou alérgica a nozes!',
-    status:'pendente',preco:null
-  };
-  await push(ref(db,'pedidos'), fake);
-  toast('🧪 Pedido de teste criado!');
-});
-
 // ── Toast ──
 function toast(msg) {
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2800);
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
 }
 window.toast = toast;
 
 // ── PWA hint ──
-if(window.innerWidth>600||window.matchMedia('(display-mode:standalone)').matches)
-  document.getElementById('pwaHint').style.display='none';
+if (window.innerWidth > 600 || window.matchMedia('(display-mode:standalone)').matches)
+  document.getElementById('pwaHint').style.display = 'none';
 
-// Render inicial
 render();
 </script>
 </body>
