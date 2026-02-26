@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evinha Bolos e Mimos</title>
+<title>Bolos da Evinha 🎂</title>
 <link rel="icon" type="image/png" href="https://i.imgur.com/McYRejn.png">
 
 <style>
@@ -355,7 +355,7 @@ window.goStep = n => {
     else dot.textContent=i;
   }
   for(let i=1;i<=4;i++){const l=document.getElementById('sl'+i+(i+1));if(l)l.classList.toggle('done',i<n);}
-  step=n; window.scrollTo({top:0,behavior:'smooth'});
+  step=n; document.getElementById('stepsBar').scrollIntoView({behavior:'smooth', block:'start'});
 };
 
 window.irResumo = () => {
