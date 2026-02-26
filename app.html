@@ -320,24 +320,16 @@ window.confirmar = async key => {
 
   const msg = [
     `Oi ${p.cliente}! 🎂`,
-    ``,
     `Seu pedido foi *CONFIRMADO*! 🎉`,
     ``,
-    `🎂 Recheio: ${p.recheios&&p.recheios.length ? p.recheios.join(', ') : 'Combinado'}`,
-    `✨ Cobertura: ${p.cobertura||'Combinado'}`,
     `📅 Data de retirada: ${df}`,
+    `👤 Bolo para ${p.pessoas||'?'} pessoas`,
     `💰 Valor total: *${totalStr}*`,
-    ``,
-    `━━━━━━━━━━━━━━━━━━`,
-    `⚡ *ENTRADA VIA PIX: ${entradaStr}*`,
-    `Para garantir seu pedido, por favor pague a entrada antes de eu começar a fazer 😊`,
+    `Será cobrado 50% (*${entradaStr}*) no ato do pedido e os outros 50% é pago na retirada 💛`,
     ``,
     `🔑 *Chave PIX (telefone):* ${PIX_CHAVE}`,
-    `━━━━━━━━━━━━━━━━━━`,
     ``,
-    `O restante paga na retirada 💛`,
-    ``,
-    `Qualquer dúvida me chama aqui! 🎂`,
+    `Qualquer dúvida me chama aqui!`,
   ].join('\n');
 
   const tel = (p.telefone||'').replace(/\D/g,'');
